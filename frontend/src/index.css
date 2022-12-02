@@ -1,0 +1,135 @@
+*{
+  margin: 0px;
+}
+body{
+  width: 100vw;
+  height: 100vh;
+}
+
+.header{
+  background-color: #81cacf;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+  box-shadow: 0px 0px 5px black;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+}
+.header h1{
+  margin-left: 10px;
+  font-size: 30px;
+  font-family: cursive;
+}
+
+.NotesAdder{
+  width: 300px;
+  height: 250px;
+  border-radius: 10px;
+  margin:10px auto ;
+  /* margin: 14px; */
+  padding:10px 10px ;
+  border: 1px solid black;
+  
+}
+
+.NotesAdder input{
+  /* border: none; */
+  margin-bottom: 10px;
+  width: 97%;
+}
+
+.NotesAdder input:first-child{
+  font-size: 50px;
+}
+
+#NotesAdderNotes{
+  height: 120px; 
+  width: 97%;
+}
+
+.NotesAdder button{
+  font-size: 30px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-weight: bolder;
+  background-color: rgb(255, 191, 0);
+  border: none;
+}
+
+.AllCards{
+  display: flex;
+  /* justify-content: space-between; */
+  justify-content: space-around;
+  flex-wrap: wrap;
+  /* margin: 10px 30px; */
+  width:100vw ;
+  padding-bottom: 50px;
+}
+
+/* .AllCards .Cards:first-child{
+  display: none;
+} */
+
+.Cards{
+  background-color: aqua;
+  width: 270px;
+  height: 150px;  
+  border-radius: 20px;
+  margin: 10px 25px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.437);
+  padding: 10px 20px;
+  overflow-wrap:break-word;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
+}
+
+.Cards::-webkit-scrollbar{
+  display: none;
+}
+
+.Cards h1{
+  font-size:45px;
+  margin-bottom: 10px;
+  font-weight: bolder;
+}
+
+.Cards p {
+  font-size: 18px;
+}
+
+.Cards #CardsButton{
+  margin-top: 10px;
+  margin-left: 80%;
+  right: 10px;
+  background-color: red;
+  color: white;
+  font-weight: bolder;
+  font-size: 25px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border: none;
+  transform: rotate(45deg);
+}
+
+.Cards #CardsButton:hover{
+  transform: scale(1.2) rotate(45deg);
+  box-shadow: 0px 0px 5px black;
+}
+
+.Footer{
+  background-color: #81cacf;
+  position: fixed;
+  bottom: 0px;
+  display: flex;
+  width: 80vw;
+  padding: 0px 10vw;
+  justify-content: space-evenly;
+
+}
+.Footer a{
+  color: black;
+}
