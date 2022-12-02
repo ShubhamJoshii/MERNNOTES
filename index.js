@@ -6,16 +6,16 @@
 const Express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-// const {MongoDB,ports} = require('./config/keys');
-
+const {MongoDB} = require('./config/keys');
+require('dotenv').config();
 const App = Express();
 
 App.use(Express.json())
 App.use(Express.urlencoded())
 App.use(cors())
 
-// const DB = MongoDB;
-const DB = "mongodb+srv://NotesMaker:x6svuFpCUQA4KevZ@cluster0.abizmm9.mongodb.net/?retryWrites=true&w=majority";
+const DB = MongoDB;
+// const DB = "mongodb+srv://NotesMaker:x6svuFpCUQA4KevZ@cluster0.abizmm9.mongodb.net/?retryWrites=true&w=majority";
 
 // mongoose.connect("mongodb://localhost:27017/NotesMaker").then(()=>{
 //   console.log("Data Base Connected")
@@ -72,15 +72,16 @@ App.post("/display",async (req,res)=>{
 })
 
 // const port =  ports;
-const port = process.env.PORT || 8000;
+const port = process.env.PORT;
+// console.log(process.env.PORT)
 
-// if(process.env.NODE_ENV == "production"){
+if(process.env.NODE_ENV == "production"){
     const path = require("path");
     App.get("/",(req,res)=>{
         App.use(Express.static(path.resolve(__dirname,"frontend/build")));
         res.sendFile(path.resolve(__dirname,"frontend/build"));
     })
-// }
+}
 
 App.get("/home",(req,res)=>{
   res.send(`Page Found ${port}`);
@@ -89,7 +90,6 @@ App.get("/home",(req,res)=>{
 // App.get("*",(req,res)=>{
 //   res.send(`Page Not Found ${port}`);
 // })
-
 App.listen(port,()=>{
   console.log(`Express Connection Successfull at Port ${port}`)
 })
