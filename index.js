@@ -86,9 +86,9 @@ App.get("/home",(req,res)=>{
   res.send(`Page Found ${port}`);
 })
 
-App.get("*",(req,res)=>{
-  res.send(`Page Not Found ${port}`);
-})
+// App.get("*",(req,res)=>{
+//   res.send(`Page Not Found ${port}`);
+// })
 
 App.listen(port,()=>{
   console.log(`Express Connection Successfull at Port ${port}`)
