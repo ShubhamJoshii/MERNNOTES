@@ -34,7 +34,7 @@ const NotesAdder = () => {
   //   });
 
   const DisplayData = () => {
-    axios.post("http://localhost:8000/display").then((res) => {
+    axios.post(`http://localhost:${port}/display`).then((res) => {
       // DisplayArr = res.data.message;
       setDisplayArr(res.data.message);
       // console.log(DisplayArr);
