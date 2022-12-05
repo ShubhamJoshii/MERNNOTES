@@ -11,7 +11,6 @@ const NotesAdder = () => {
     Notes: "",
   });
   let port = process.env.PORT || 8000;
-
   const PostData = async (e) => {
     const { Topic, Notes } = Data;
     console.log(Topic);

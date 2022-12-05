@@ -12,7 +12,12 @@ const App = Express();
 
 App.use(Express.json())
 App.use(Express.urlencoded())
-App.use(cors())
+// App.use(cors())
+
+App.use(cors({
+  origin:"*",
+  methods:['GET']
+}))
 
 const DB = MongoDB;
 // const DB = "mongodb+srv://NotesMaker:x6svuFpCUQA4KevZ@cluster0.abizmm9.mongodb.net/?retryWrites=true&w=majority";
@@ -72,8 +77,9 @@ App.post("/display",async (req,res)=>{
 })
 
 // const port =  ports;
-const port = process.env.PORT;
+const port = process.env.PORT || 8000;
 // console.log(process.env.PORT)
+
 
 if(process.env.NODE_ENV == "production"){
     const path = require("path");
