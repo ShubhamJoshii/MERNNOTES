@@ -2,7 +2,10 @@
 import { useEffect, useState } from "react";
 
 const Cards = ({refresh}) => {
-  const [Cards, setCards] = useState([{}]);
+  const [Cards, setCards] = useState([{
+    Title:"Please Login!",
+    Notes:"Otherwise Notes will be not Save Thank you ❤️"
+  }]);
 
   const AllCards = async () => {
     try {
