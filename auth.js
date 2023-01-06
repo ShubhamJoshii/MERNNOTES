@@ -4,9 +4,6 @@ const NotesWeb = require("./database")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const Authenication = require("./Authenication")
-router.get("/",(req,res)=>[
-    res.send("Hello World")
-])
 
 router.post("/home",Authenication,(req,res)=>{
     // console.log(req.rootUser)
