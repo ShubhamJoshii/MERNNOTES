@@ -1,0 +1,132 @@
+.Register{
+    border: 1px solid red;
+    width: 450px;
+    border-radius: 10px;
+    background:linear-gradient( to right,rgba(0, 255, 255, 0.192) 50%,white 50% );
+    margin: 10px auto;
+}
+.Register #userLogo{
+    border-radius:10px 10px 0px 0px;
+}
+
+.Register #textLogin{
+    color: white;
+    background-color: #00A4B3;
+    font-weight: bolder;
+    font-size: 20px;
+    text-align: center;
+    margin: 10px 32.5%;
+    width: 35%;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.Register .inputPassword #logoPassword{
+    margin-left: 28px;
+}
+.Register .inputPassword #passwordShow, .Register .inputPassword #ConfirmpasswordShow{
+    margin-right: 20px;
+}
+
+.Register .registerForm{
+    background-color: #00a4b36b;
+    width: 95%;
+    margin: 10px 2.5%;
+    padding: 5px 0px;
+    display: flex;
+    justify-content:center;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.Register .registerForm input{
+    width: 80%;
+    padding: 5px;
+    background: none;
+    border: none;
+    text-align: center;
+    font-weight: 600;
+    font-size: 15px;
+    outline: none;
+    color: white;
+}
+
+.Register #loginBtn{
+    font-weight: 900;
+    background-color: #00A4B3;
+    color: white;
+    width: 80%;
+    border: none;
+    font-size: 20px;
+    margin: 10px 10%;
+    padding:5px 10px;
+    border-radius: 10px;
+    cursor:pointer;
+}
+
+.Register #loginBtn:hover{
+    transform: scale(1.1);
+}
+
+.Register p{
+    color: #00A4B3;
+    margin: auto;
+    text-align: center;
+    padding: 5px 18px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.dropDownBTN{
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    /* color: white; */
+    font-weight: bolder ;
+    font-size: 17px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.dropDownBTN img{
+    margin-left: 5px;
+    filter: invert();
+}
+
+.dropDownMenu{
+    margin-left: 30px;
+}
+
+.dropDownMenu div label{
+    width: 30%;
+}
+
+.dropDownMenu div input{
+    width:65%;
+    padding: 5px;
+    background-color:#00a4b36b;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 15px;
+    outline: none;
+    color: white;
+}
+
+.dropDownMenu div{
+    display: flex;
+    margin: 10px 0px;
+
+}
+
+@media only screen and (max-width: 500px) {
+    .Register{
+        width: 90vw;
+    }
+    .Register #userLogo{
+        width: 90vw;
+        aspect-ratio: 3/2;
+    }
+}

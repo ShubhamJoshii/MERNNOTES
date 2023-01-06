@@ -1,0 +1,80 @@
+.Login{
+    border: 1px solid red;
+    width: 350px;
+    border-radius: 10px;
+    background:linear-gradient( to right,rgba(0, 255, 255, 0.192) 50%,white 50% );
+    margin: 70px auto;
+
+}
+.Login img{
+    border-radius:10px 10px 0px 0px;
+}
+
+
+.Login #textLogin{
+    color: white;
+    background-color: #00A4B3;
+    font-weight: bolder;
+    font-size: 20px;
+    text-align: center;
+    margin: 10px 32.5%;
+    width: 35%;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+
+.Login .inputForm{
+    background-color: #00a4b36b;
+    width: 95%;
+    margin: 10px 2.5%;
+    padding: 5px 0px;
+    display: flex;
+    justify-content:center;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.Login .inputPassword #logoPassword{
+    margin-left: 20px;
+}
+.Login .inputPassword #passwordShow{
+    margin-right: 20px;
+}
+.Login .inputForm input{
+    outline: 0;
+    border: none;
+    color: white;
+    background: none;
+    width: 80%;
+    padding: 5px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.Login #loginBtn{
+    font-weight: 900;
+    background-color: #00A4B3;
+    color: white;
+    width: 80%;
+    border: none;
+    font-size: 20px;
+    margin: 10px 10%;
+    padding:5px 10px;
+    border-radius: 10px;
+    cursor:pointer;
+}
+
+.Login #loginBtn:hover{
+    transform: scale(1.1);
+}
+
+.Login p{
+    color: #00A4B3;
+    margin: auto;
+    text-align: center;
+    padding: 5px 18px;
+    font-size: 14px;
+    cursor: pointer;
+}

@@ -1,26 +1,56 @@
-import axios from "axios";
-const Cards = (props) =>{
-    const delteNotes = (e) =>{
-        let Delete = {
-            _id : e.target.name
-        }
-        // console.log(Delete);
-        let port = process.env.PORT || 8000;
+// import axios from "axios";
+import { useEffect, useState } from "react";
 
-        axios.post(`http://localhost:${port}/deleteData`,Delete).then((res)=>{
-            console.log("Deleted Note")
-        })
+const Cards = ({refresh}) => {
+  const [Cards, setCards] = useState([{}]);
+
+  const AllCards = async () => {
+    try {
+      const res = await fetch("/fetchNotes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({}),
+      });
+      const Data = await res.json();
+      console.log(Data.Notes);
+      // console.log(Data._id)
+      setCards(Data.Notes);
+    } catch (err) {
+      console.log(err);
     }
-    return(
-        <div className="Cards">
-            <div className="CardsTopic"> 
-                <h1>{props.Topic}</h1>
+  };
+
+  const deleteNote = async(e)=>{
+    console.log(e.target.name)
+
+  }
+  useEffect(() => {
+    AllCards();
+    // console.log(cardsData)
+  }, [refresh]);
+
+  // useEffect(() => {
+  //   console.log(Cards);
+  // }, [Cards]);
+
+  return (
+    <div className="cardsOuter">
+      {Cards.map((curr,id) => {
+        return (
+          <div className="Cards" key={curr.id}>
+            <div className="CardsTopic">
+              <h1>{curr.Title}</h1>
             </div>
             <div className="CardsNotes">
-                <p>{props.Notes}</p>
+              <p>{curr.Notes}</p>
             </div>
-            <button id="CardsButton" onClick={delteNotes} name={props.id}>+</button>
-        </div>
-    )
-}
+            <button id="CardsButton" name={id} onClick={deleteNote}>X</button>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 export default Cards;

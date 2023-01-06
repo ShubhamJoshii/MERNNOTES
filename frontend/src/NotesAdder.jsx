@@ -1,95 +1,60 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import Cards from "./Cards";
-import axios from "axios";
+
 const NotesAdder = () => {
-  const [Topictemp, setTopictemp] = useState("");
-  const [Notestemp, setNotestemp] = useState("");
-  const [count, setCount] = useState(0);
-  let [DisplayArr, setDisplayArr] = useState([]);
-  const [Data, setData] = useState({
-    Topic: "",
-    Notes: "",
-  });
-  let port = process.env.PORT || 8000;
-  const PostData = async (e) => {
-    const { Topic, Notes } = Data;
-    console.log(Topic);
-    console.log(Notes);
-    axios.post(`http://localhost:${port}/input`, Data).then((res) => {
-      // console.log(res.data.message)
-      alert(res.data.message);
-    });
-    
-  };
-  
-  // fetch("http://localhost:8000/dataDisplay")
-  //   .then((response) => response.json())
-  //   .then((data) => {
-  //     // console.log(data);
-  //     setDisplayArr(data)
-  //   })
-  //   .catch(() => {
-  //     console.log("error1");
-  //   });
-
-  const DisplayData = () => {
-    axios.post(`http://localhost:${port}/display`).then((res) => {
-      // DisplayArr = res.data.message;
-      setDisplayArr(res.data.message);
-      // console.log(DisplayArr);
-      // alert(DisplayArr);
-    });
-  };
-  const SaveCards = (e) => {
-    setData({
-      Topic: Topictemp,
-      Notes: Notestemp,
-    });
+  const [cardsData,setcardsData] = useState({
+    Title:"",Notes:""
+  })
+  const [refresh,setRefresh] = useState(0);
+  const SaveCards = async(e)=>{
     e.preventDefault();
-  };
-
-  useEffect(() => {
-    if (count > 0) {
-      PostData();
+    const {Title,Notes} = cardsData
+    console.log(Title,Notes);
+    try{
+      const res = await fetch("/SaveNotes",{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({Title,Notes})
+      })
+      const Data = await res.json()
+      alert(Data.message)
+      setRefresh(refresh+1)
+    }catch(err){
+      console.log(err)
     }
-    setCount(count + 1);
-  }, [Data]);
-  
-  useEffect(() => {
-    DisplayData();
-  }, [DisplayArr]);
+  }
+
+  const handleInput = (e)=>{
+    const name = e.target.name
+    const value = e.target.value
+    setcardsData({...cardsData,[name]:value})    
+  }
+
   return (
+
     <div>
       <div className="NotesAdder">
-        <form action="POST">
+        <form method="POST">
           <input
             type="text"
             placeholder="Title"
-            onChange={(e) => {
-              // console.log(e.target.value);
-              setTopictemp(e.target.value);
-            }}
+            name="Title"
+            onChange={handleInput}
           />
           <br />
           <textarea
-            name=""
             id="NotesAdderNotes"
+            name="Notes"
+            onChange={handleInput}
             placeholder="Write a note..."
-            onChange={(e) => {
-              // console.log(e.target.value);
-              setNotestemp(e.target.value);
-            }}
           ></textarea>
           <br />
           <button onClick={SaveCards}>+</button>
         </form>
       </div>
-      <div className="AllCards">
-        {DisplayArr.map((curr,id) => {
-          {/* console.log(curr); */}
-          return <Cards Topic={curr.Topic} Notes={curr.Notes} id={curr._id} key = {id}/>;
-        })}
-      </div>
+      <Cards refresh={refresh} />
     </div>
   );
 };
